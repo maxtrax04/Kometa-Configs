@@ -1,0 +1,74 @@
+##############################################################################
+#                          Other Awards Collections                          #
+#                 Created by Yozora, Bullmoose20, & Sohjiro                  #
+#                 Credit to maxwelldeux for the Trakt Lists                  #
+#          EDITING THIS FILE MAY CAUSE PULLING NEW UPDATES TO FAIL           #
+#        https://metamanager.wiki/en/latest/defaults/award/other.html        #
+##############################################################################
+
+external_templates:
+  pmm: templates
+  template_variables:
+    collection_section: 130
+
+
+templates:
+  Rotten Tomatoes:
+    trakt_list: https://trakt.tv/users/lish408/lists/rotten-tomatoes-best-of-<<key>>
+    sync_mode: sync
+    collection_mode: default
+    collection_order: custom
+    sort_title: "!130_Rotten Tomatoes Best of <<key>>"
+    schedule: monthly(01)
+    url_poster: https://raw.githubusercontent.com/WhoDat104/Rotten-Tomatoes/main/Rotten%20Tomatoes%20Best%20of%20<<key>>.jpg
+  Collection:
+    optional:
+    - poster
+    url_poster: <<poster>>
+    sync_mode: sync
+    collection_order: audience_rating.desc
+    sort_title: "!130_<<collection_name>>"
+    schedule: weekly(tuesday|thursday)
+collections:
+  1001 Movies You Must See Before You Die:
+    template: {name: Collection, poster: https://raw.githubusercontent.com/kometa-team/Default-Images/master/genre/1001%20Movies%20You%20Must%20See%20Before%20You%20Die.jpg}
+    trakt_list: https://trakt.tv/users/sp1ti/lists/1001-movies-you-must-see-before-you-die
+    collection_order: release.desc
+    schedule: daily
+    visible_home: range(01/01-12/31)
+    visible_shared: range(01/01-12/31)
+  Rotten Tomatoes Best All-Time:
+    trakt_list: https://trakt.tv/users/lish408/lists/rotten-tomatoes-top-100-movies-of-all-time
+    sync_mode: sync
+    collection_mode: default
+    collection_order: custom
+    sort_title: "!130_Rotten !1"
+    schedule: monthly(10)
+    url_poster: https://raw.githubusercontent.com/WhoDat104/Rotten-Tomatoes/main/Rotten%20Tomatoes%20Best%20All-Time.jpg
+  Rotten Tomatoes Best Horror:
+    trakt_list: https://trakt.tv/users/lish408/lists/rotten-tomatoes-best-horror-movies-of-all-time
+    sync_mode: sync
+    collection_mode: default
+    collection_order: custom
+    sort_title: "!130_Rotten !2"
+    schedule: monthly(10)
+    url_poster: https://raw.githubusercontent.com/WhoDat104/Rotten-Tomatoes/main/Rotten%20Tomatoes%20Best%20Horror.jpg
+  Rotten Tomatoes Best Rom Com:
+    trakt_list: https://trakt.tv/users/lish408/lists/rotten-tomatoes-the-200-best-romantic-comedies-of-all-time
+    sync_mode: sync
+    collection_mode: default
+    collection_order: custom
+    sort_title: "!130_Rotten !3"
+    schedule: monthly(10)
+    url_poster: https://raw.githubusercontent.com/WhoDat104/Rotten-Tomatoes/main/Rotten%20Tomatoes%20Best%20Rom%20Com.jpg
+    
+dynamic_collections:
+  Rotten Tomatoes Best of:
+    type: number
+    sync: true
+    data:
+      starting: current_year-2
+      ending: current_year-1
+    title_format: Rotten Tomatoes Best of <<key_name>>
+    template:
+      - Rotten Tomatoes
